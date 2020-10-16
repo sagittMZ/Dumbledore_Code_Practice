@@ -1,11 +1,6 @@
 package FirstWeek;
 
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-
+import BaseMethods.BaseMethods;
 import com.jayway.jsonpath.JsonPath;
 import java.io.IOException;
 import java.text.ParseException;
@@ -13,22 +8,21 @@ import java.text.SimpleDateFormat;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Scanner;
 
 
-public class DayOne {
+public class DayOne extends BaseMethods {
     private static final String
             BASE_URI = "http://worldtimeapi.org/api/timezone/Europe/Moscow";
 
-
     public static void dayOneTaskOneGreetings() {
-
+        System.out.println("Введите ваше имя: ");
         String userName = getStringFromUser();
         int hour = getCurrentTimeInHour();
         checkCondionsForTime(hour,userName);
     }
 
     public static  void dayOneTaskTwoGreetings() throws IOException, ParseException {
+        System.out.println("Введите ваше имя: ");
         String userName = getStringFromUser();
         int hour = parseJsonToTakeHour(getRequest(BASE_URI));
         checkCondionsForTime(hour,userName);
@@ -57,13 +51,6 @@ public class DayOne {
 
     }
 
-    public static String getStringFromUser()  {
-        Scanner in = new Scanner(System.in);
-        String name = in.nextLine();
-        in.close();
-        return name;
-    }
-
     public static int getCurrentTimeInHour(){
         int  current_hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
         return current_hour;
@@ -77,27 +64,6 @@ public class DayOne {
        int hour = Integer.parseInt(format.format(currTime));
        return hour;
 
-    }
-
-    public static String getRequest(String url_path) throws IOException
-    {
-        CloseableHttpClient httpclient = HttpClients.createDefault();
-        HttpGet httpget = new HttpGet(url_path);
-        HttpResponse httpresponse = httpclient.execute(httpget);
-        Scanner sc = new Scanner(httpresponse.getEntity().getContent());
-        StringBuffer result = new StringBuffer();
-        int statuscode = httpresponse.getStatusLine().getStatusCode();
-        if (statuscode == 200) {
-
-            while (sc.hasNext()) {
-                result.append(sc.nextLine());
-            }
-        }
-        else
-            {
-                System.out.println("Server died :-)");
-            }
-        return String.valueOf(result);
     }
 
 }
