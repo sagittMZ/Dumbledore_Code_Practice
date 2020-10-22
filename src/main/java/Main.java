@@ -8,7 +8,7 @@ import static FirstWeek.DayTwo.dayTwoTaskOneSimpleStringOperations;
 public class Main {
     public static void main (String[] args) {
         dayTwoTaskOneSimpleStringOperations();
-        //AAARRRGGGHHHH
+        //some tests
 
     }
 }
