@@ -3,9 +3,6 @@ package FirstWeek;
 
 import BaseMethods.BaseMethods;
 
-import java.io.IOException;
-import java.util.Scanner;
-
 //- Функция должна напечатать количество символов в тексте.
 //- Функция должна напечатать количество символов без учета пробелов.
 //- Функция должна напечатать "количество символов в тексте четное"
@@ -16,16 +13,17 @@ import java.util.Scanner;
 
 public class DayTwo extends BaseMethods {
     public static void dayTwoTaskOneSimpleStringOperations() {
-
         System.out.println("Type some text:");
         String userInputText = getStringFromUser();
 
         System.out.println("Type some integer:");
+       // int userInputNumber = Integer.valueOf(getStringFromUser());
         int userInputNumber = getIntFromUser();
 
-//        System.out.println("Type some text:");
-//        String userInputText = getStringFromUser();
 
+
+
+        //scanner.close();
         System.out.println("Amount of symbols in text: " + userInputText.length());
         System.out.println("Amount of symbols in text without space: " + userInputText.replace(" ", "").length());
 
