@@ -10,22 +10,23 @@ import java.util.Scanner;
 
 public class BaseMethods {
     public static String getStringFromUser() {
-        Scanner scanner = new Scanner(System.in);
-        String name = scanner.nextLine();
-        scanner.close();
-        return name;
+
+           Scanner scanner = new Scanner(System.in);
+           String name = scanner.nextLine();
+
+       return name;
     }
 
     public static int getIntFromUser() {
-        Scanner in = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         int num0 = 0;
-        if (in.hasNextInt()) {
-            int num = in.nextInt();
-            in.close();
+        if (scanner.hasNextInt()) {
+            int num = scanner.nextInt();
+            scanner.close();
             return num;
         } else {
             System.out.println("Вы ввели не целое число");
-            in.close();
+            scanner.close();
             return num0;
         }
       }
